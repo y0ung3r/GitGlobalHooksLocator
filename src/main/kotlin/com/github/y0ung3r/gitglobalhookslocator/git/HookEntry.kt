@@ -18,8 +18,14 @@ class HookEntry(private var file: File) {
         }
     }
 
+    val name: String
+        = HooksFolder
+            .availableHooks
+            .first { file.nameWithoutExtension.contains(it) }
+
     fun isDisabled()
-        = HooksFolder.availableHooks
+        = HooksFolder
+            .availableHooks
             .all { it != file.nameWithoutExtension }
 
     fun enable() {
@@ -27,7 +33,7 @@ class HookEntry(private var file: File) {
             return
         }
 
-        renameFile(HooksFolder.availableHooks.first { file.nameWithoutExtension.contains(it) })
+        renameFile(name)
     }
 
     fun disable() {

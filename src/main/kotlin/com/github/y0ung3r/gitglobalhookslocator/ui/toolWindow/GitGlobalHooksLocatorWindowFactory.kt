@@ -22,5 +22,5 @@ class GitGlobalHooksLocatorWindowFactory : ToolWindowFactory {
     }
 
     override fun shouldBeAvailable(project: Project)
-        = project.isInitialized && !project.isDefault
+        = !project.isDefault
 }
