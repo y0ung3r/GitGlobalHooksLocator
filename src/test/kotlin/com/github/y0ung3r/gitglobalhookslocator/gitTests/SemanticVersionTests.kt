@@ -1,7 +1,7 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.SemanticVersion
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.ProvidedSemanticVersionIsInvalidException
+import com.github.y0ung3r.gitglobalhookslocator.git.SemanticVersion
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.ProvidedSemanticVersionIsInvalidException
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runners.Parameterized.Parameters

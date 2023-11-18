@@ -1,6 +1,6 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.HooksFolder
+import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
 import org.junit.runners.Parameterized
 import java.nio.file.Files
 import java.nio.file.Path

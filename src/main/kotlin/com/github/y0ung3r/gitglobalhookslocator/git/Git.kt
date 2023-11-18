@@ -1,12 +1,12 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git
+package com.github.y0ung3r.gitglobalhookslocator.git
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.DefaultCliCommandExecutor
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.NotFoundCliResponse
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.GitCommandNotFoundException
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.GitIsNotInstalledException
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.GitVersionIsNotSupportedException
-import com.github.y0ung3r.gitglobalhookslocator.services.git.extensions.toGitResponse
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.interfaces.CliCommandExecutor
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.DefaultCliCommandExecutor
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.NotFoundCliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitCommandNotFoundException
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitIsNotInstalledException
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitVersionIsNotSupportedException
+import com.github.y0ung3r.gitglobalhookslocator.git.extensions.toGitResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.interfaces.CliCommandExecutor
 
 class Git(private val commandExecutor: CliCommandExecutor) {
     companion object {

@@ -1,4 +1,4 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git.cli
+package com.github.y0ung3r.gitglobalhookslocator.git.cli
 
 open class CliResponse(value: String) {
     val value: String = value.trim()

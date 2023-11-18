@@ -1,6 +1,6 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git
+package com.github.y0ung3r.gitglobalhookslocator.git
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.HookNotFoundException
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.HookNotFoundException
 import java.io.File
 import java.nio.file.Path
 
@@ -19,8 +19,7 @@ class HookEntry(private var file: File) {
     }
 
     fun isDisabled()
-        = HooksFolder
-            .availableHooks
+        = HooksFolder.availableHooks
             .all { it != file.nameWithoutExtension }
 
     fun enable() {

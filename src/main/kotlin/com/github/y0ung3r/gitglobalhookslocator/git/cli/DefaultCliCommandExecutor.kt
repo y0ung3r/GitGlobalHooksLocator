@@ -1,6 +1,6 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git.cli
+package com.github.y0ung3r.gitglobalhookslocator.git.cli
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.interfaces.CliCommandExecutor
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.interfaces.CliCommandExecutor
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets

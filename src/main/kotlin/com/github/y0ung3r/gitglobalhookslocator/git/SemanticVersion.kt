@@ -1,7 +1,7 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git
+package com.github.y0ung3r.gitglobalhookslocator.git
 
 import ai.grazie.utils.findAllMatches
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.ProvidedSemanticVersionIsInvalidException
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.ProvidedSemanticVersionIsInvalidException
 
 class SemanticVersion(val major: Int, val minor: Int, val patch: Int) : Comparable<SemanticVersion> {
     companion object {

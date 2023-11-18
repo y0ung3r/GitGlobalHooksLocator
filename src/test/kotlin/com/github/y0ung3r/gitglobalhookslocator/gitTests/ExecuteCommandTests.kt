@@ -1,8 +1,8 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.EmptyCliResponse
-import com.github.y0ung3r.gitglobalhookslocator.services.git.Git
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.GitCommandNotFoundException
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.EmptyCliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.Git
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitCommandNotFoundException
 import org.junit.Assert.assertNotEquals
 import org.junit.Test
 

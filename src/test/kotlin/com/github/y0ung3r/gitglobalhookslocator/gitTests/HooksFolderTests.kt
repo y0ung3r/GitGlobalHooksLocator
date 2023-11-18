@@ -2,9 +2,9 @@ package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
 import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
 import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondInterchangeably
-import com.github.y0ung3r.gitglobalhookslocator.services.git.Git
-import com.github.y0ung3r.gitglobalhookslocator.services.git.HooksFolder
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.CliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.Git
+import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test

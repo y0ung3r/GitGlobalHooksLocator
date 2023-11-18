@@ -1,6 +1,6 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git
+package com.github.y0ung3r.gitglobalhookslocator.git
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.extensions.getGlobalHooksPath
+import com.github.y0ung3r.gitglobalhookslocator.git.extensions.getGlobalHooksPath
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.nameWithoutExtension

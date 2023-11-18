@@ -1,11 +1,11 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
 import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondOnce
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.EmptyCliResponse
-import com.github.y0ung3r.gitglobalhookslocator.services.git.Git
-import com.github.y0ung3r.gitglobalhookslocator.services.git.cli.CliResponse
-import com.github.y0ung3r.gitglobalhookslocator.services.git.SemanticVersion
-import com.github.y0ung3r.gitglobalhookslocator.services.git.exceptions.GitIsNotInstalledException
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.EmptyCliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.Git
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.SemanticVersion
+import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitIsNotInstalledException
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

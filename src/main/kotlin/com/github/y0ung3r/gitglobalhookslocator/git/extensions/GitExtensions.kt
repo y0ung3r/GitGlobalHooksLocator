@@ -1,6 +1,6 @@
-package com.github.y0ung3r.gitglobalhookslocator.services.git.extensions
+package com.github.y0ung3r.gitglobalhookslocator.git.extensions
 
-import com.github.y0ung3r.gitglobalhookslocator.services.git.Git
+import com.github.y0ung3r.gitglobalhookslocator.git.Git
 
 fun Git.getGlobalHooksPath(): String {
     val path = executeCommand(
