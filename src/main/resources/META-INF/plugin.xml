@@ -3,12 +3,22 @@
     <id>com.github.y0ung3r.gitglobalhookslocator</id>
     <name>Git Global Hooks Locator</name>
     <vendor>y0ung3r</vendor>
+    <version>0.0.1</version>
+
+    <description><![CDATA[
+      Intellij plugin to enable or disable global Git hooks
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Initial release
+    ]]>
+    </change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.LocatorBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.y0ung3r.gitglobalhookslocator.ui.toolWindow.GitGlobalHooksLocatorWindowFactory" id="GitGlobalHooksLocatorToolWindow"/>
+        <toolWindow factoryClass="com.github.y0ung3r.gitglobalhookslocator.ui.toolWindow.GitGlobalHooksLocatorWindowFactory" id="GIt Global Hooks Locator" icon="AllIcons.General.Locate" />
     </extensions>
 </idea-plugin>
