@@ -25,6 +25,7 @@ class ExecuteCommandTests {
         val actualResponse = sut.executeCommand(
             Git.GIT_CONFIG_COMMAND,
             Git.GIT_GLOBAL_COMMAND,
+            Git.GIT_CONFIG_GET_COMMAND,
             "user.name"
         )
 
