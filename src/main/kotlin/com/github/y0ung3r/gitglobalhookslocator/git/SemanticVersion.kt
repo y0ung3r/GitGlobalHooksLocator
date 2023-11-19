@@ -1,6 +1,5 @@
 package com.github.y0ung3r.gitglobalhookslocator.git
 
-import ai.grazie.utils.findAllMatches
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.ProvidedSemanticVersionIsInvalidException
 
 class SemanticVersion(val major: Int, val minor: Int, val patch: Int) : Comparable<SemanticVersion> {
@@ -10,7 +9,7 @@ class SemanticVersion(val major: Int, val minor: Int, val patch: Int) : Comparab
 
         @JvmStatic
         fun parse(version: String): SemanticVersion {
-            val match = Regex(VERSION_PATTERN).findAllMatches(version).firstOrNull()
+            val match = Regex(VERSION_PATTERN).findAll(version).firstOrNull()
                 ?: throw ProvidedSemanticVersionIsInvalidException(version)
 
             return match.value.split(COMPONENTS_DELIMITER).let {

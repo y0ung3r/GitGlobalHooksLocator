@@ -7,6 +7,8 @@ import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
 import com.intellij.ide.wizard.withVisualPadding
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.dsl.builder.Align
+import com.intellij.ui.dsl.builder.LabelPosition
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.ui.dsl.gridLayout.HorizontalAlign
 import com.intellij.ui.dsl.gridLayout.VerticalAlign
@@ -30,8 +32,7 @@ class GitGlobalHooksLocatorWindow(toolWindow: ToolWindow) {
                         .getMessage("locator.ui.toolWindow.hooksFolderEmpty", hooksFolder.path)
 
                     label(text)
-                        .horizontalAlign(HorizontalAlign.CENTER)
-                        .verticalAlign(VerticalAlign.CENTER)
+                        .align(Align.CENTER)
                 }
             }
         }

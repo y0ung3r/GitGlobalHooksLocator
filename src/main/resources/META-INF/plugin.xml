@@ -3,7 +3,6 @@
     <id>com.github.y0ung3r.gitglobalhookslocator</id>
     <name>Git Global Hooks Locator</name>
     <vendor>y0ung3r</vendor>
-    <version>0.0.1</version>
 
     <description><![CDATA[
       Intellij plugin to enable or disable global Git hooks
