@@ -117,6 +117,10 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
 
+      # Set git config variables
+      - name: Set Git Config Variables
+        run: git config --global user.name 'Nikita Velikiy'
+
       # Run tests
       - name: Run Tests
         run: ./gradlew check
