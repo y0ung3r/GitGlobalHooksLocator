@@ -3,3 +3,4 @@
 .qodana
 build
 src/test/testData/hooks
+out
