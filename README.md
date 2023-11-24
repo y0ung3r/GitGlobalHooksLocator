@@ -1,8 +1,8 @@
 # GitGlobalHooksLocator
 
 ![Build](https://github.com/y0ung3r/GitGlobalHooksLocator/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/23182-git-global-hooks-locator)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/23182-git-global-hooks-locator)
+[![Version](https://img.shields.io/jetbrains/plugin/v/com.github.y0ung3r.gitglobalhookslocator.svg)](https://plugins.jetbrains.com/plugin/23182-git-global-hooks-locator)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.y0ung3r.gitglobalhookslocator.svg)](https://plugins.jetbrains.com/plugin/23182-git-global-hooks-locator)
 
 <!-- Plugin description -->
 Intellij plugin to enable or disable global Git hooks
