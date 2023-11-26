@@ -34,7 +34,7 @@ class HooksFolder(git: Git) {
         = hooks.isEmpty()
 
     init {
-        path = Path.of(git.getGlobalHooksPath())
+        path = git.getGlobalHooksPath()
 
         val files = try {
             Files.list(path)
