@@ -96,27 +96,4 @@ class GetGlobalHooksPathTests {
         // Assert
         assertEquals(expectedPath, actualPath)
     }
-
-    @Test
-    fun `Should resolve path using root pointer`() {
-        // Arrange
-        val expectedPath = Path.of(
-            SystemPathUtils.getRootPath(),
-            ".git",
-            "hooks"
-        )
-
-        val sut = Git(
-            RespondInterchangeably(
-                CliResponse(Git.minRequiredVersion.toString()),
-                CliResponse("/.git/hooks")
-            )
-        )
-
-        // Act
-        val actualPath = sut.getGlobalHooksPath()
-
-        // Assert
-        assertEquals(expectedPath, actualPath)
-    }
 }

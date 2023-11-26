@@ -7,7 +7,6 @@ import java.nio.file.Path
 private const val SLASHES_PATTERN = "[/\\\\]"
 private const val HOME_PATTERN = "^~$SLASHES_PATTERN"
 private const val CURRENT_DIR_PATTERN = "^.$SLASHES_PATTERN"
-private const val ROOT_PATTERN = "^$SLASHES_PATTERN"
 
 fun Git.getGlobalHooksPath(): Path {
     val rawPath = executeCommand(
@@ -25,10 +24,6 @@ fun Git.getGlobalHooksPath(): Path {
         .replaceFirst(
             Regex(CURRENT_DIR_PATTERN),
             SystemPathUtils.getCurrentDirectoryPath()
-        )
-        .replaceFirst(
-            Regex(ROOT_PATTERN),
-            SystemPathUtils.getRootPath()
         )
 
     return Path.of(targetPath)
