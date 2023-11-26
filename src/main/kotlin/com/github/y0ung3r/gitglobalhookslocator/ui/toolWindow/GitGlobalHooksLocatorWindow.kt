@@ -8,10 +8,7 @@ import com.intellij.ide.wizard.withVisualPadding
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.dsl.builder.Align
-import com.intellij.ui.dsl.builder.LabelPosition
 import com.intellij.ui.dsl.builder.panel
-import com.intellij.ui.dsl.gridLayout.HorizontalAlign
-import com.intellij.ui.dsl.gridLayout.VerticalAlign
 import javax.swing.JComponent
 
 class GitGlobalHooksLocatorWindow(toolWindow: ToolWindow) {

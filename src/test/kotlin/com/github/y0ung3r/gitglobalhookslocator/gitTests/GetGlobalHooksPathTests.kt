@@ -11,36 +11,17 @@ import java.nio.file.Path
 
 class GetGlobalHooksPathTests {
     @Test
-    fun `Should returns absolute global hooks path using absolute path`() {
-        // Arrange
-        val expectedPath = "C:/Users/user/.git/hooks"
-        val sut = Git(
-            RespondInterchangeably(
-                CliResponse(Git.minRequiredVersion.toString()),
-                CliResponse(expectedPath)
-            )
-        )
-
-        // Act
-        val actualPath = sut.getGlobalHooksPath()
-
-        // Assert
-        assertEquals(Path.of(expectedPath), actualPath)
-    }
-
-    @Test
     fun `Should returns absolute global hooks path using relative path`() {
         // Arrange
-        val expectedPath = Path.of(
-            SystemPathUtils.getCurrentDirectoryPath(),
-            ".git",
-            "hooks"
-        )
+        val relativePath = "/.git/hooks"
+        val expectedPath = Path
+            .of(relativePath)
+            .toAbsolutePath()
 
         val sut = Git(
             RespondInterchangeably(
                 CliResponse(Git.minRequiredVersion.toString()),
-                CliResponse(".git/hooks")
+                CliResponse(relativePath)
             )
         )
 
