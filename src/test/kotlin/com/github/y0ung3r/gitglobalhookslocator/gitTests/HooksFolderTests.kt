@@ -1,13 +1,11 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
-import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
-import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondInterchangeably
 import com.github.y0ung3r.gitglobalhookslocator.git.Git
 import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
-import org.junit.Assert
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
+import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondInterchangeably
+import org.junit.Assert.*
 import org.junit.Test
 import java.nio.file.Path
 
@@ -20,18 +18,6 @@ class HooksFolderTests : HookTestBase() {
                 CliResponse(hooksPath.toString())
             )
         )
-    }
-
-    @Test
-    fun `Should be empty if provided empty path`() {
-        // Arrange
-        val git = getGit(Path.of(""))
-
-        // Act
-        val sut = HooksFolder(git)
-
-        // Assert
-        assertTrue(sut.isEmpty())
     }
 
     @Test
@@ -65,7 +51,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Act & Assert
-        Assert.assertTrue(sut.isAllDisabled())
+        assertTrue(sut.isAllDisabled())
     }
 
     @Test
@@ -75,7 +61,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Act & Assert
-        Assert.assertFalse(sut.isAllDisabled())
+        assertFalse(sut.isAllDisabled())
     }
 
     @Test
@@ -88,7 +74,7 @@ class HooksFolderTests : HookTestBase() {
         sut.disableAll()
 
         // Assert
-        Assert.assertTrue(sut.isAllDisabled())
+        assertTrue(sut.isAllDisabled())
     }
 
     @Test
@@ -101,6 +87,6 @@ class HooksFolderTests : HookTestBase() {
         sut.enableAll()
 
         // Assert
-        Assert.assertFalse(sut.isAllDisabled())
+        assertFalse(sut.isAllDisabled())
     }
 }

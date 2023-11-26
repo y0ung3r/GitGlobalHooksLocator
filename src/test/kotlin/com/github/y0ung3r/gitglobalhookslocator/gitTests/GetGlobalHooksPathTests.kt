@@ -16,7 +16,7 @@ class GetGlobalHooksPathTests {
     fun `Should returns default hooks path if path is not overridden`() {
         // Arrange
         val expectedPath = Path.of(
-            SystemPathUtils.getCurrentDirectoryPath(),
+            SystemPathUtils.getUserHomePath(),
             ".git",
             "hooks"
         )
@@ -39,7 +39,7 @@ class GetGlobalHooksPathTests {
     fun `Should returns default hooks path if path is empty`() {
         // Arrange
         val expectedPath = Path.of(
-            SystemPathUtils.getCurrentDirectoryPath(),
+            SystemPathUtils.getUserHomePath(),
             ".git",
             "hooks"
         )
