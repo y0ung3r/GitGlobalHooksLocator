@@ -20,12 +20,12 @@ class HookEntry(private var file: File) {
 
     val name: String
         = HooksFolder
-            .availableHooks
+            .supportedHooks
             .first { file.nameWithoutExtension.contains(it) }
 
     fun isDisabled()
         = HooksFolder
-            .availableHooks
+            .supportedHooks
             .all { it != file.nameWithoutExtension }
 
     fun enable() {

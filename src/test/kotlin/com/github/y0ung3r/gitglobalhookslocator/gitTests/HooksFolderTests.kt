@@ -7,6 +7,7 @@ import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
 import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.nio.file.Path
 
@@ -22,6 +23,18 @@ class HooksFolderTests : HookTestBase() {
     }
 
     @Test
+    fun `Should be empty if provided empty path`() {
+        // Arrange
+        val git = getGit(Path.of(""))
+
+        // Act
+        val sut = HooksFolder(git)
+
+        // Assert
+        assertTrue(sut.isEmpty())
+    }
+
+    @Test
     fun `Should load all hooks from disabled hooks path`() {
         // Arrange
         val git = getGit(getDisabledHooksPath())
@@ -30,7 +43,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Assert
-        assertEquals(HooksFolder.availableHooks.size, sut.hooks.size)
+        assertEquals(HooksFolder.supportedHooks.size, sut.hooks.size)
     }
 
     @Test
@@ -42,7 +55,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Assert
-        assertEquals(HooksFolder.availableHooks.size, sut.hooks.size)
+        assertEquals(HooksFolder.supportedHooks.size, sut.hooks.size)
     }
 
     @Test

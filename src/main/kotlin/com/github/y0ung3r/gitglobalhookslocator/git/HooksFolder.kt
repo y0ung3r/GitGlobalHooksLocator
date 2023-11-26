@@ -10,7 +10,7 @@ import java.nio.file.NoSuchFileException
 class HooksFolder(git: Git) {
     companion object {
         @JvmStatic
-        val availableHooks = arrayOf(
+        val supportedHooks = arrayOf(
             "pre-commit",
             "prepare-commit-msg",
             "commit-msg",
@@ -41,7 +41,7 @@ class HooksFolder(git: Git) {
         }
         catch (exception: NoSuchFileException) {
             thisLogger()
-                .info("Provided hooks path doesn't exists", exception)
+                .info("Provided hooks path is not valid", exception)
 
             emptyList<Path>()
                 .stream()
@@ -49,7 +49,7 @@ class HooksFolder(git: Git) {
 
         hooks = files
             .filter {
-                availableHooks
+                supportedHooks
                     .any { hookName ->
                         it.fileName.nameWithoutExtension.contains(hookName) }
             }

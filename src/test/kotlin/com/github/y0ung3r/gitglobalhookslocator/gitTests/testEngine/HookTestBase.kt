@@ -65,7 +65,7 @@ abstract class HookTestBase {
         @JvmStatic
         @Parameterized.Parameters
         fun hookNames()
-            = HooksFolder.availableHooks
+            = HooksFolder.supportedHooks
     }
 
     init {
