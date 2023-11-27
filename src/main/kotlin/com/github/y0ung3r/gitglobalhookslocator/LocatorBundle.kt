@@ -9,6 +9,7 @@ private const val BUNDLE = "messages.LocatorBundle"
 
 object LocatorBundle : DynamicBundle(BUNDLE) {
 
+    @Suppress("unused")
     @JvmStatic
     fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
         getMessage(key, *params)
