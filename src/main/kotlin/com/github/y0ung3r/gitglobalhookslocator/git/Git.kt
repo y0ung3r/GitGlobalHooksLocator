@@ -20,7 +20,7 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         const val DEFAULT_HOOKS_PATH = "~/.git/hooks"
 
         @JvmStatic
-        val minRequiredVersion = SemanticVersion(2, 9, 0)
+        val minRequiredVersion = GitVersion(2, 9, 0)
 
         @JvmStatic
         val instance = Git(DefaultCliCommandExecutor())
@@ -48,7 +48,7 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         }
     }
 
-    fun getInstalledVersion() : SemanticVersion {
+    fun getInstalledVersion() : GitVersion {
         val installedVersion = try {
             executeCommand(GIT_VERSION_COMMAND)
         } catch (exception: GitCommandNotFoundException) {
@@ -56,7 +56,7 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         }
 
         return when {
-            !installedVersion.isEmpty() -> SemanticVersion.parse(installedVersion.value)
+            !installedVersion.isEmpty() -> GitVersion.parse(installedVersion.value)
             else -> throw GitIsNotInstalledException()
         }
     }

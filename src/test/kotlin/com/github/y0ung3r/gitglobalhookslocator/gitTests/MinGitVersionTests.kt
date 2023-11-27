@@ -15,10 +15,10 @@ class MinGitVersionTests(private val unsupportedVersion: String, private val sup
         @JvmStatic
         @Parameters
         fun version() = arrayOf(
-            arrayOf("1.0.0", "2.9.0"),
-            arrayOf("1.0.1", "2.9.1"),
-            arrayOf("2.0.0", "2.43.0"),
-            arrayOf("2.0.1", "2.43.1"),
+            arrayOf("git version 1.0.0", "git version 2.9.0"),
+            arrayOf("git version 1.0.1", "git version 2.9.1"),
+            arrayOf("git version 2.0.0", "git version 2.43.0"),
+            arrayOf("git version 2.0.1", "git version 2.43.1"),
         )
     }
 

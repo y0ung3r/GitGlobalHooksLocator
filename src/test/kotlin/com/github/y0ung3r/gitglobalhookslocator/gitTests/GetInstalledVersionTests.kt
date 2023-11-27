@@ -4,7 +4,7 @@ import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondOnce
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.EmptyCliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.Git
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
-import com.github.y0ung3r.gitglobalhookslocator.git.SemanticVersion
+import com.github.y0ung3r.gitglobalhookslocator.git.GitVersion
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.NotFoundCliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitIsNotInstalledException
 import org.junit.Assert.assertEquals
@@ -34,7 +34,7 @@ class GetInstalledVersionTests {
     @Test
     fun `Should returns Git version info`() {
         // Arrange
-        val expectedVersion = SemanticVersion(2, 9, 2)
+        val expectedVersion = GitVersion(2, 9, 2)
         val sut = Git(
             RespondOnce(
                 CliResponse(expectedVersion.toString())
