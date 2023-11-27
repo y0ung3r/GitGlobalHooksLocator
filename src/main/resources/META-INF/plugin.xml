@@ -4,11 +4,6 @@
     <name>Git Global Hooks Locator</name>
     <vendor>y0ung3r</vendor>
 
-    <change-notes><![CDATA[
-      Initial release
-    ]]>
-    </change-notes>
-
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.LocatorBundle</resource-bundle>

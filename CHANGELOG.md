@@ -1,9 +1,13 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# GitGlobalHooksLocator Changelog
+# Changelog
 
 ## [Unreleased]
 
-## [0.0.1]
+## [0.0.2]
+### Fixed
+- Fix empty core.hooksPath value handling
+- Fix relative paths handling
 
-- Initial release
+### Changed
+- Git version handling

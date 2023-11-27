@@ -7,7 +7,7 @@ import java.nio.file.Path
 
 abstract class HookTestBase {
     companion object {
-        const val BASE_PATH = "src/test/testData/hooks"
+        private const val BASE_PATH = "src/test/testData/hooks"
         private const val DISABLED_HOOK = "disabled"
         private const val ENABLED_HOOK = "enabled"
 
@@ -65,7 +65,7 @@ abstract class HookTestBase {
         @JvmStatic
         @Parameterized.Parameters
         fun hookNames()
-            = HooksFolder.availableHooks
+            = HooksFolder.supportedHooks
     }
 
     init {

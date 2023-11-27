@@ -1,12 +1,11 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
-import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
-import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondInterchangeably
 import com.github.y0ung3r.gitglobalhookslocator.git.Git
 import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
-import org.junit.Assert
-import org.junit.Assert.assertEquals
+import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
+import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.RespondInterchangeably
+import org.junit.Assert.*
 import org.junit.Test
 import java.nio.file.Path
 
@@ -30,7 +29,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Assert
-        assertEquals(HooksFolder.availableHooks.size, sut.hooks.size)
+        assertEquals(HooksFolder.supportedHooks.size, sut.hooks.size)
     }
 
     @Test
@@ -42,7 +41,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Assert
-        assertEquals(HooksFolder.availableHooks.size, sut.hooks.size)
+        assertEquals(HooksFolder.supportedHooks.size, sut.hooks.size)
     }
 
     @Test
@@ -52,7 +51,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Act & Assert
-        Assert.assertTrue(sut.isAllDisabled())
+        assertTrue(sut.isAllDisabled())
     }
 
     @Test
@@ -62,7 +61,7 @@ class HooksFolderTests : HookTestBase() {
         val sut = HooksFolder(git)
 
         // Act & Assert
-        Assert.assertFalse(sut.isAllDisabled())
+        assertFalse(sut.isAllDisabled())
     }
 
     @Test
@@ -75,7 +74,7 @@ class HooksFolderTests : HookTestBase() {
         sut.disableAll()
 
         // Assert
-        Assert.assertTrue(sut.isAllDisabled())
+        assertTrue(sut.isAllDisabled())
     }
 
     @Test
@@ -88,6 +87,6 @@ class HooksFolderTests : HookTestBase() {
         sut.enableAll()
 
         // Assert
-        Assert.assertFalse(sut.isAllDisabled())
+        assertFalse(sut.isAllDisabled())
     }
 }

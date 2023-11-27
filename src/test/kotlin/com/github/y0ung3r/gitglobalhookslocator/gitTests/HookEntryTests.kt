@@ -22,7 +22,7 @@ class HookEntryTests(private val hookName: String) : HookTestBase() {
     }
 
     @Test
-    fun `Should be disabled if hook name not contains in available Git hooks`() { // TODO: Rename test
+    fun `Hook should be disabled`() {
         // Arrange
         val sut = HookEntry.load(getDisabledHookPath(hookName))
 
@@ -31,7 +31,7 @@ class HookEntryTests(private val hookName: String) : HookTestBase() {
     }
 
     @Test
-    fun `Should be enabled if hook name contains in available Git hooks`() { // TODO: Rename test
+    fun `Hook should be enabled`() {
         // Arrange
         val sut = HookEntry.load(getEnabledHookPath(hookName))
 

@@ -1,12 +1,13 @@
 package com.github.y0ung3r.gitglobalhookslocator.git
 
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.DefaultCliCommandExecutor
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.EmptyCliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.NotFoundCliResponse
+import com.github.y0ung3r.gitglobalhookslocator.git.cli.interfaces.CliCommandExecutor
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitCommandNotFoundException
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitIsNotInstalledException
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitVersionIsNotSupportedException
 import com.github.y0ung3r.gitglobalhookslocator.git.extensions.toGitResponse
-import com.github.y0ung3r.gitglobalhookslocator.git.cli.interfaces.CliCommandExecutor
 
 class Git(private val commandExecutor: CliCommandExecutor) {
     companion object {
@@ -16,9 +17,10 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         const val GIT_GLOBAL_COMMAND = "--global"
         const val GIT_CONFIG_GET_COMMAND = "--get"
         const val GIT_HOOKS_PATH_SECTION = "core.hooksPath"
+        const val DEFAULT_HOOKS_PATH = "~/.git/hooks"
 
         @JvmStatic
-        val minRequiredVersion = SemanticVersion(2, 9, 0)
+        val minRequiredVersion = GitVersion(2, 9, 0)
 
         @JvmStatic
         val instance = Git(DefaultCliCommandExecutor())
@@ -41,16 +43,20 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         processBuilder.redirectErrorStream(true)
 
         return when (val response = commandExecutor.execute(processBuilder)) {
-            is NotFoundCliResponse -> throw GitCommandNotFoundException(*params)
+            is NotFoundCliResponse -> throw GitCommandNotFoundException(response.value, *params)
             else -> response.toGitResponse()
         }
     }
 
-    fun getInstalledVersion() : SemanticVersion {
-        val installedVersion = executeCommand(GIT_VERSION_COMMAND)
+    fun getInstalledVersion() : GitVersion {
+        val installedVersion = try {
+            executeCommand(GIT_VERSION_COMMAND)
+        } catch (exception: GitCommandNotFoundException) {
+            GitResponse(EmptyCliResponse())
+        }
 
         return when {
-            !installedVersion.isEmpty() -> SemanticVersion.parse(installedVersion.value)
+            !installedVersion.isEmpty() -> GitVersion.parse(installedVersion.value)
             else -> throw GitIsNotInstalledException()
         }
     }
