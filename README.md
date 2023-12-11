@@ -10,6 +10,7 @@ Intellij plugin to enable or disable global Git hooks
 Hooks are programs you can place in a hooks directory (specified in core.hooksPath) to trigger actions at certain points in git’s execution.
 Unfortunately, Intellij can only keep track of local hooks located inside a project.
 With this plugin, you can enable or disable your global Git hooks directly from the IDE.
+
 The following hooks are available:
 - pre-commit
 - prepare-commit-msg
@@ -27,6 +28,17 @@ The following hooks are available:
 <!-- Plugin description end -->
 
 ![Git Global Hooks Locator](src/main/resources/description.png)
+
+## Getting Started
+Configure the `core.hooksPath` parameter in global `.gitconfig` according to the [Git documentation](https://git-scm.com/docs/githooks). 
+You can also use the following command:
+```
+git config --global core.hooksPath {PATH_TO_HOOKS_FOLDER}
+```
+If `core.hooksPath` is not specified, the plugin will use the following path by default:
+```
+~/.git/hooks
+```
 
 ## Installation
 
