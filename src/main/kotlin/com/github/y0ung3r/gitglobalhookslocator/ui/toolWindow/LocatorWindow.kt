@@ -11,7 +11,7 @@ import com.intellij.ui.dsl.builder.Align
 import com.intellij.ui.dsl.builder.panel
 import javax.swing.JComponent
 
-class GitGlobalHooksLocatorWindow(toolWindow: ToolWindow) {
+class LocatorWindow(toolWindow: ToolWindow) {
     private val hooksFolder: HooksFolder
         = HooksFolder(Git.instance)
 

@@ -9,6 +9,6 @@
     <resource-bundle>messages.LocatorBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.y0ung3r.gitglobalhookslocator.ui.toolWindow.GitGlobalHooksLocatorWindowFactory" id="Git Global Hooks Locator" icon="AllIcons.General.Locate" />
+        <toolWindow factoryClass="com.github.y0ung3r.gitglobalhookslocator.ui.toolWindow.LocatorWindowFactory" id="Git Global Hooks Locator" icon="AllIcons.General.Locate" />
     </extensions>
 </idea-plugin>

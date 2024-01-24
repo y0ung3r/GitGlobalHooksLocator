@@ -1,6 +1,7 @@
 [versions]
 # libraries
 annotations = "24.1.0"
+rxkotlin = "3.0.1"
 
 # plugins
 kotlin = "1.9.21"
@@ -11,6 +12,7 @@ kover = "0.7.5"
 
 [libraries]
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }
+rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
