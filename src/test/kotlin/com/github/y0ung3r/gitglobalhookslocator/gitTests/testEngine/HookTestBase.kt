@@ -42,6 +42,17 @@ abstract class HookTestBase {
             = getHooksPath(ENABLED_HOOK)
 
         @JvmStatic
+        fun createHook(hookName: String) {
+            val hookPath = getHookPath(ENABLED_HOOK, hookName).toFile()
+
+            if (hookPath.exists()) {
+                return
+            }
+
+            hookPath.createNewFile()
+        }
+
+        @JvmStatic
         private fun clearTestHooks(hookType: String) {
             val hooksPath = getHooksPath(hookType)
 
