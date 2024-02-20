@@ -90,7 +90,34 @@ class HooksFolder(git: Git) {
 					return@create emitter.onComplete()
 				}
 
-				emitFolderEvent(emitter, folderEntry, kind)
+				val pendingEvents = folderEntry
+					.pollEvents()
+					.map {
+						@Suppress("UNCHECKED_CAST")
+						it as WatchEvent<Path>
+					}
+
+				// if a rename event is received
+				val isRenameEventReceived = pendingEvents.size > 1 &&
+					kind == StandardWatchEventKinds.ENTRY_MODIFY
+
+				val targetKind = if (isRenameEventReceived)
+						StandardWatchEventKinds.ENTRY_CREATE
+					else kind
+
+				val originalEvent = pendingEvents
+					.firstOrNull { it.kind() == targetKind }
+
+				if (originalEvent != null) {
+					val folderEvent = HooksFolderEvent(
+						kind,
+						originalEvent.context(),
+						path)
+
+					if (HookName.isSupportedHook(folderEvent.hookPath)) {
+						emitter.onNext(folderEvent)
+					}
+				}
 
 				if (!folderEntry.reset()) {
 					return@create emitter.onComplete()
@@ -108,36 +135,6 @@ class HooksFolder(git: Git) {
 				.error("An error occurred while watching the hooks folder", it)
 
 			observeFolder(kind)
-		}
-	}
-
-	private fun emitFolderEvent(
-		emitter: ObservableEmitter<HooksFolderEvent>,
-		folderEntry: WatchKey,
-		observableKind: WatchEvent.Kind<Path>) {
-		val pendingEvents = folderEntry
-			.pollEvents()
-			.map {
-				@Suppress("UNCHECKED_CAST")
-				it as WatchEvent<Path>
-			}
-
-		val targetKind = when {
-			pendingEvents.size > 1 -> StandardWatchEventKinds.ENTRY_CREATE
-			else -> observableKind
-		}
-
-		val originalEvent = pendingEvents
-			.firstOrNull { it.kind() == targetKind }
-				?: return
-
-		val folderEvent = HooksFolderEvent(
-			observableKind,
-			originalEvent.context(),
-			path)
-
-		if (HookName.isSupportedHook(folderEvent.hookPath)) {
-			emitter.onNext(folderEvent)
 		}
 	}
 
