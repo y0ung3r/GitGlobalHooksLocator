@@ -1,5 +1,8 @@
 package com.github.y0ung3r.gitglobalhookslocator.git.utils
 
+import java.awt.Desktop
+import java.nio.file.Path
+
 object SystemPathUtils {
 	private const val USER_HOME_KEY = "user.home"
 	private const val USER_DIR_KEY = "user.dir"
@@ -20,4 +23,18 @@ object SystemPathUtils {
 	@JvmStatic
 	fun getCurrentDirectoryPath(): String
 		= getSystemPath(USER_DIR_KEY)
+
+	@JvmStatic
+	fun tryOpen(path: Path): Boolean {
+		if (Desktop.isDesktopSupported()) {
+			val desktop = Desktop.getDesktop()
+
+			if (desktop.isSupported(Desktop.Action.OPEN)) {
+				desktop.open(path.toFile())
+				return true
+			}
+		}
+
+		return false
+	}
 }
