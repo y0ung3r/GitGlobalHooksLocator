@@ -1,10 +1,8 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests
 
+import com.github.y0ung3r.gitglobalhookslocator.git.hooks.HookEntry
+import com.github.y0ung3r.gitglobalhookslocator.git.hooks.exceptions.HookNotFoundException
 import com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine.HookTestBase
-import com.github.y0ung3r.gitglobalhookslocator.git.HookEntry
-import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.HookNotFoundException
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

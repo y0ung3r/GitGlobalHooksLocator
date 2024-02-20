@@ -5,6 +5,7 @@ import com.github.y0ung3r.gitglobalhookslocator.git.cli.interfaces.CliCommandExe
 
 class RespondInterchangeably(vararg responses: CliResponse) : CliCommandExecutor {
     private val iterator = responses.iterator()
+
     override fun execute(processBuilder: ProcessBuilder): CliResponse
         = iterator.next()
 }

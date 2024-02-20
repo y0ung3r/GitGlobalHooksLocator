@@ -6,7 +6,7 @@ import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.EmptyCliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.NotFoundCliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.extensions.getGlobalHooksPath
-import com.github.y0ung3r.gitglobalhookslocator.git.utils.SystemPathUtils
+import com.github.y0ung3r.gitglobalhookslocator.utils.SystemPathUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.nio.file.Path
