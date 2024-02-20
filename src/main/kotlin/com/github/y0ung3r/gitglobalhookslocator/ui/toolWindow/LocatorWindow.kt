@@ -4,7 +4,8 @@ import com.github.y0ung3r.gitglobalhookslocator.LocatorBundle
 import com.github.y0ung3r.gitglobalhookslocator.git.Git
 import com.github.y0ung3r.gitglobalhookslocator.git.hooks.HookName
 import com.github.y0ung3r.gitglobalhookslocator.git.hooks.HooksFolder
-import com.github.y0ung3r.gitglobalhookslocator.git.utils.SystemPathUtils
+import com.github.y0ung3r.gitglobalhookslocator.ui.Notifier
+import com.github.y0ung3r.gitglobalhookslocator.utils.SystemPathUtils
 import com.intellij.ide.wizard.withVisualPadding
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.ui.components.JBCheckBox

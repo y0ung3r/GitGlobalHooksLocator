@@ -1,4 +1,4 @@
-package com.github.y0ung3r.gitglobalhookslocator.git.utils
+package com.github.y0ung3r.gitglobalhookslocator.utils
 
 import java.awt.Desktop
 import java.nio.file.Path

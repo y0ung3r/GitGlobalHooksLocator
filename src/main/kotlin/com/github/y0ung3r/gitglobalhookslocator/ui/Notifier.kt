@@ -1,4 +1,4 @@
-package com.github.y0ung3r.gitglobalhookslocator.ui.toolWindow
+package com.github.y0ung3r.gitglobalhookslocator.ui
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType

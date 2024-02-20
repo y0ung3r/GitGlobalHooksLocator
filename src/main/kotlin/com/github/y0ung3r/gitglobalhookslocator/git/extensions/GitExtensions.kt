@@ -4,7 +4,7 @@ import com.github.y0ung3r.gitglobalhookslocator.git.Git
 import com.github.y0ung3r.gitglobalhookslocator.git.GitResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.cli.CliResponse
 import com.github.y0ung3r.gitglobalhookslocator.git.exceptions.GitCommandNotFoundException
-import com.github.y0ung3r.gitglobalhookslocator.git.utils.SystemPathUtils
+import com.github.y0ung3r.gitglobalhookslocator.utils.SystemPathUtils
 import java.nio.file.Path
 
 private const val SLASHES_PATTERN = "[/\\\\]"
