@@ -18,7 +18,7 @@ class GitVersionTests(
     companion object {
         @JvmStatic
         @Parameters
-        fun versions() = arrayOf(
+        fun versions(): Array<Array<Any>> = arrayOf(
             arrayOf("git version -1.0.0", "git version 1.1.1", 1, 1, 1),
             arrayOf("git version 1.-1.0", "git version 2.42.0.windows.2", 2, 42, 0),
             arrayOf("git version 0.0.-1", "git version 0.99.9n", 0, 99, 9),

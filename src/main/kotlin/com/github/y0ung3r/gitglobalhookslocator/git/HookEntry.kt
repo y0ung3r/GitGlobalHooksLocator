@@ -6,7 +6,6 @@ import java.nio.file.Path
 
 class HookEntry(private var file: File) {
     companion object {
-        @JvmStatic
         fun load(filePath: Path): HookEntry {
             val file = filePath.toFile()
 

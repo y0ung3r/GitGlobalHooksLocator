@@ -9,7 +9,6 @@ import java.nio.file.NoSuchFileException
 
 class HooksFolder(git: Git) {
     companion object {
-        @JvmStatic
         val supportedHooks = arrayOf(
             "pre-commit",
             "prepare-commit-msg",
@@ -28,14 +27,12 @@ class HooksFolder(git: Git) {
     }
 
     val hooks: List<HookEntry>
-    val path: Path
+    val path: Path = git.getGlobalHooksPath()
 
     fun isEmpty(): Boolean
         = hooks.isEmpty()
 
     init {
-        path = git.getGlobalHooksPath()
-
         val files = try {
             Files.list(path)
         }
