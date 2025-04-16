@@ -1,9 +1,9 @@
 package com.github.y0ung3r.gitglobalhookslocator.gitTests.testEngine
 
 import com.github.y0ung3r.gitglobalhookslocator.git.HooksFolder
-import org.junit.runners.Parameterized
 import java.nio.file.Files
 import java.nio.file.Path
+import org.junit.runners.Parameterized.Parameters
 
 abstract class HookTestBase {
     companion object {
@@ -54,7 +54,8 @@ abstract class HookTestBase {
                 .forEach { it.createNewFile() }
         }
 
-        @Parameterized.Parameters
+        @JvmStatic
+        @Parameters
         fun hookNames()
             = HooksFolder.supportedHooks
     }
