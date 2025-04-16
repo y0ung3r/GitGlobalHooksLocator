@@ -11,7 +11,6 @@ import java.nio.file.Path
 
 class HooksFolderTests : HookTestBase() {
     private companion object {
-        @JvmStatic
         fun getGit(hooksPath: Path) = Git(
             RespondInterchangeably(
                 CliResponse(Git.minRequiredVersion.toString()),
