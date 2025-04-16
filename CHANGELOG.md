@@ -12,7 +12,7 @@ Nothing here
 ### Fixed
 - The user interface now correctly responds to the addition, removal, and renaming of hooks
 
-Many thanks to @ForNeVeR for convincing the JetBrains team to expose the `CommitOptionsDialogExtension`
+Many thanks to [@ForNeVeR](https://github.com/ForNeVeR) for convincing the JetBrains team to expose the `CommitOptionsDialogExtension`
 
 ## [0.0.2]
 ### Fixed
