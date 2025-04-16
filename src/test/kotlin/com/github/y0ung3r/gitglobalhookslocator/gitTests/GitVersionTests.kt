@@ -16,7 +16,6 @@ class GitVersionTests(
     private val validMinor: Int,
     private val validPatch: Int) {
     companion object {
-        @JvmStatic
         @Parameters
         fun versions() = arrayOf(
             arrayOf("git version -1.0.0", "git version 1.1.1", 1, 1, 1),

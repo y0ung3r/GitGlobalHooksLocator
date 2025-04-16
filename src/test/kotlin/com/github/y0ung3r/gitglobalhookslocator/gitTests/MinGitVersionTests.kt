@@ -12,7 +12,6 @@ import org.junit.runners.Parameterized.Parameters
 @RunWith(Parameterized::class)
 class MinGitVersionTests(private val unsupportedVersion: String, private val supportedVersion: String) {
     companion object {
-        @JvmStatic
         @Parameters
         fun version() = arrayOf(
             arrayOf("git version 1.0.0", "git version 2.9.0"),

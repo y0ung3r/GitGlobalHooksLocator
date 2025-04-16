@@ -19,10 +19,8 @@ class Git(private val commandExecutor: CliCommandExecutor) {
         const val GIT_HOOKS_PATH_SECTION = "core.hooksPath"
         const val DEFAULT_HOOKS_PATH = "~/.git/hooks"
 
-        @JvmStatic
         val minRequiredVersion = GitVersion(2, 9, 0)
 
-        @JvmStatic
         val instance = Git(DefaultCliCommandExecutor())
     }
 

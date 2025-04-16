@@ -11,7 +11,6 @@ abstract class HookTestBase {
         private const val DISABLED_HOOK = "disabled"
         private const val ENABLED_HOOK = "enabled"
 
-        @JvmStatic
         private fun getHookPath(hookType: String, hookName: String): Path {
             val categorizedHookName = when (hookType) {
                 DISABLED_HOOK -> "_$hookName"
@@ -21,27 +20,21 @@ abstract class HookTestBase {
             return Path.of(BASE_PATH, hookType, categorizedHookName)
         }
 
-        @JvmStatic
         private fun getHooksPath(hookType: String): Path
             = Path.of(BASE_PATH, hookType)
 
-        @JvmStatic
         fun getDisabledHookPath(hookName: String): Path
             = getHookPath(DISABLED_HOOK, hookName)
 
-        @JvmStatic
         fun getEnabledHookPath(hookName: String): Path
             = getHookPath(ENABLED_HOOK, hookName)
 
-        @JvmStatic
         fun getDisabledHooksPath(): Path
             = getHooksPath(DISABLED_HOOK)
 
-        @JvmStatic
         fun getEnabledHooksPath(): Path
             = getHooksPath(ENABLED_HOOK)
 
-        @JvmStatic
         private fun clearTestHooks(hookType: String) {
             val hooksPath = getHooksPath(hookType)
 
@@ -52,7 +45,6 @@ abstract class HookTestBase {
             Files.list(hooksPath).forEach { it.toFile().delete() }
         }
 
-        @JvmStatic
         private fun generateTestHooks(hookType: String) {
             clearTestHooks(hookType)
 
@@ -62,7 +54,6 @@ abstract class HookTestBase {
                 .forEach { it.createNewFile() }
         }
 
-        @JvmStatic
         @Parameterized.Parameters
         fun hookNames()
             = HooksFolder.supportedHooks
