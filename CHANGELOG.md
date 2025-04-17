@@ -3,6 +3,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [0.1.0]
 ### Added
 - The entire user interface has been moved to `Show Commit Options`
 
