@@ -3,6 +3,7 @@
 # Changelog
 
 ## [Unreleased]
+
 ### Added
 
 - The entire user interface has been moved to `Show Commit Options`
@@ -13,7 +14,7 @@
 
 Many thanks to [@ForNeVeR](https://github.com/ForNeVeR) for convincing the JetBrains team to expose the `CommitOptionsDialogExtension`
 
-## [0.0.2]
+## [0.0.2] - 2023-11-28
 
 ### Fixed
 
@@ -24,7 +25,7 @@ Many thanks to [@ForNeVeR](https://github.com/ForNeVeR) for convincing the JetBr
 
 - Git version handling
 
-## [0.0.1]
+## [0.0.1] - 2023-11-19
 
 - Initial release
 
