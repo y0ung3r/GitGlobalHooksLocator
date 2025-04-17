@@ -43,6 +43,9 @@ If `core.hooksPath` is not specified, the plugin will use the following path by 
 ## New UI
 Starting from version `v0.1.0`, a new UI is available within the `Show Commit Options` settings. Many thanks to [@ForNeVeR](https://github.com/ForNeVeR) for convincing the JetBrains team to expose the `CommitOptionsDialogExtension`.
 
+## CI/CD workflows
+Thanks to [@ForNeVeR](https://github.com/ForNeVeR) for providing the finished CI/CD workflows for the IntelliJ plugin.
+
 ## Installation
 
 - Using the IDE built-in plugin system:

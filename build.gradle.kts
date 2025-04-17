@@ -1,4 +1,5 @@
 import org.jetbrains.changelog.Changelog
+import org.jetbrains.changelog.exceptions.MissingVersionException
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
@@ -11,7 +12,6 @@ plugins {
     alias(libs.plugins.gradleIntelliJPlatformPlugin)
     alias(libs.plugins.changelog)
     alias(libs.plugins.qodana)
-    alias(libs.plugins.gradleJvmWrapper)
 }
 
 group = properties("pluginGroup").get()
@@ -38,7 +38,7 @@ dependencies {
     intellijPlatform {
         intellijIdeaCommunity(libs.versions.ideaSdk)
 
-        testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.Bundled)
 
         pluginVerifier()
     }
@@ -80,22 +80,22 @@ tasks {
             }
         }
 
-        val changelog = project.changelog // local variable for configuration cache compatibility
-        // Get the latest available change notes from the changelog file
-        changeNotes = properties("pluginVersion").map { pluginVersion ->
-            with(changelog) {
-                renderItem(
-                    (getOrNull(pluginVersion) ?: getUnreleased())
-                        .withHeader(false)
-                        .withEmptySections(false),
-                    Changelog.OutputType.HTML
-                )
-            }
+        val latestChangelog = try {
+            changelog.getUnreleased()
+        } catch (_: MissingVersionException) {
+            changelog.getLatest()
         }
+        changeNotes.set(provider {
+            changelog.renderItem(
+                latestChangelog
+                    .withHeader(false)
+                    .withEmptySections(false),
+                Changelog.OutputType.HTML
+            )
+        })
     }
 
     publishPlugin {
-        dependsOn(patchChangelog.name)
         token = environment("PUBLISH_TOKEN")
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:

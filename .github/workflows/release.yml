@@ -4,8 +4,17 @@
 
 name: Release
 on:
-  release:
-    types: [prereleased, released]
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
 
 jobs:
 
@@ -15,89 +24,65 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
+      - name: Read version from Git ref
+        id: version
+        shell: pwsh
+        run: echo "version=$(if ($env:GITHUB_REF.StartsWith('refs/tags/v')) { $env:GITHUB_REF -replace '^refs/tags/v', '' } else { 'next' })" >> $env:GITHUB_OUTPUT
 
-      # Check out current repository
+      # Check out the current repository
       - name: Fetch Sources
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.release.tag_name }}
 
-      # Set up Java environment for the next steps
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - name: Read the changelog
+        uses: ForNeVeR/ChangelogAutomation.action@v2
         with:
-          distribution: zulu
-          java-version: 17
+          input: ./CHANGELOG.md
+          output: ./changelog-section.md
 
-      # Setup Gradle
+      - name: 'Cache downloaded JDK'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/share/gradle-jvm
+            ~/AppData/Local/gradle-jvm
+          key: ${{ runner.os }}-${{ hashFiles('gradlew*') }}
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-home-cache-cleanup: true
 
-      # Set environment variables
-      - name: Export Properties
-        id: properties
-        shell: bash
-        run: |
-          CHANGELOG="$(cat << 'EOM' | sed -e 's/^[[:space:]]*$//g' -e '/./,$!d'
-          ${{ github.event.release.body }}
-          EOM
-          )"
-          
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+      - name: 'Build the plugin'
+        shell: pwsh
+        run: ./gradlew buildPlugin
 
-      # Update Unreleased section with the current release note
-      - name: Patch Changelog
-        if: ${{ steps.properties.outputs.changelog != '' }}
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GitGlobalHooksLocator-${{ steps.version.outputs.version }}.zip
+          path: build/distributions/GitGlobalHooksLocator-${{ steps.version.outputs.version }}.zip
+
+      - name: Upload the changelog
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog-section.md
+          path: ./changelog-section.md
+
+      - if: startsWith(github.ref, 'refs/tags/v')
+        name: Create the release
+        shell: pwsh
+        run: scripts/New-Release.ps1 -Version $env:VERSION -ReleaseNotesFilePath ./changelog-section.md -FileToUpload $env:FILE_TO_UPLOAD
         env:
-          CHANGELOG: ${{ steps.properties.outputs.changelog }}
-        run: |
-          ./gradlew patchChangelog --release-note="$CHANGELOG"
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+          FILE_TO_UPLOAD: build/distributions/GitGlobalHooksLocator-${{ steps.version.outputs.version }}.zip
 
       # Publish the plugin to JetBrains Marketplace
-      - name: Publish Plugin
+      - if: startsWith(github.ref, 'refs/tags/v')
+        name: Publish the plugin
         env:
           PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
         run: ./gradlew publishPlugin
-
-      # Upload artifact as a release asset
-      - name: Upload Release Asset
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ github.event.release.tag_name }} ./build/distributions/*
-
-      # Create a pull request
-      - name: Create Pull Request
-        if: ${{ steps.properties.outputs.changelog != '' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION="${{ github.event.release.tag_name }}"
-          BRANCH="changelog-update-$VERSION"
-          LABEL="release changelog"
-
-          git config user.email "action@github.com"
-          git config user.name "GitHub Action"
-
-          git checkout -b $BRANCH
-          git commit -am "Changelog update - $VERSION"
-          git push --set-upstream origin $BRANCH
-          
-          gh label create "$LABEL" \
-            --description "Pull requests with release changelog update" \
-            --force \
-            || true
-
-          gh pr create \
-            --title "Changelog update - \`$VERSION\`" \
-            --body "Current pull request contains patched \`CHANGELOG.md\` file for the \`$VERSION\` version." \
-            --label "$LABEL" \
-            --head $BRANCH
