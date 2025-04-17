@@ -1,7 +1,6 @@
 import org.jetbrains.changelog.Changelog
-import org.jetbrains.changelog.exceptions.MissingVersionException
-import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 fun properties(key: String) = providers.gradleProperty(key)
 fun environment(key: String) = providers.environmentVariable(key)
@@ -81,19 +80,18 @@ tasks {
             }
         }
 
-        val latestChangelog = try {
-            changelog.getUnreleased()
-        } catch (_: MissingVersionException) {
-            changelog.getLatest()
+        val changelog = project.changelog // local variable for configuration cache compatibility
+        // Get the latest available change notes from the changelog file
+        changeNotes = properties("pluginVersion").map { pluginVersion ->
+            with(changelog) {
+                renderItem(
+                    (getOrNull(pluginVersion) ?: getUnreleased())
+                        .withHeader(false)
+                        .withEmptySections(false),
+                    Changelog.OutputType.HTML
+                )
+            }
         }
-        changeNotes.set(provider {
-            changelog.renderItem(
-                latestChangelog
-                    .withHeader(false)
-                    .withEmptySections(false),
-                Changelog.OutputType.HTML
-            )
-        })
     }
 
     publishPlugin {

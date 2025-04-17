@@ -3,8 +3,6 @@
 # Changelog
 
 ## [Unreleased]
-
-## [0.1.0]
 ### Added
 - The entire user interface has been moved to `Show Commit Options`
 
@@ -24,7 +22,7 @@ Many thanks to [@ForNeVeR](https://github.com/ForNeVeR) for convincing the JetBr
 ## [0.0.1]
 - Initial release
 
-[0.0.1]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.1
-[0.0.2]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.1...v0.0.2
-[0.1.0]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.2...v0.1.0
 [Unreleased]: https://github.com/ForNeVeR/Todosaurus/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.2...v0.1.0
+[0.0.2]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/ForNeVeR/Todosaurus/commits/v0.0.1
