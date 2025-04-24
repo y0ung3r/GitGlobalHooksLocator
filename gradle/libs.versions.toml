@@ -11,4 +11,4 @@ openTest4J = "org.opentest4j:opentest4j:1.3.0"
 changelog = "org.jetbrains.changelog:2.2.1"
 gradleIntelliJPlatformPlugin = "org.jetbrains.intellij.platform:2.5.0"
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-qodana = "org.jetbrains.qodana:2024.3.4"
+qodana = "org.jetbrains.qodana:2025.1.0"
